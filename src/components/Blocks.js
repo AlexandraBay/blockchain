@@ -51,7 +51,7 @@ export default class Blocks extends Component {
                 <table>
                     <thead>
                     <tr>
-                        <td>Hash</td>
+                        <td width="60%">Hash</td>
                         <td>Height</td>
                         <td>Age</td>
                     </tr>

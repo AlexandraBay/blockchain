@@ -2,7 +2,15 @@ import React, { Component } from 'react'
 import Pagination from './Pagination'
 import {getDate} from '../common/helpers'
 import { Link } from 'react-router-dom'
+import {connect} from "react-redux";
 
+function mapStateToProps(state) {
+    return {
+        transactions: state.transactions,
+    }
+}
+
+@connect(mapStateToProps)
 export default class Transactions extends Component {
     state = {
         searchTransaction: '',
@@ -12,17 +20,12 @@ export default class Transactions extends Component {
     listTransactions = () => {
         let transactions
 
-        // if(this.props.match && this.props.match.path === '/block/:handle') {
-        //     transactions = this.state.pageOfItems
-        // } else {
-        //     this.props.dispatch(fetchBlock(this.props.tx))
-        //         .then((response) => {
-        //             console.log('response', response)
-        //         })
-        //
-        // }
-
-        transactions = this.state.pageOfItems
+        if(this.props.match && this.props.match.path === '/block/:handle') {
+            transactions = this.state.pageOfItems
+        } else {
+            transactions = this.props.transactions.transactions.tx ?
+                this.props.transactions.transactions.tx.slice(0, 10) : []
+        }
 
         let reg = new RegExp(this.state.searchTransaction, 'g')
 

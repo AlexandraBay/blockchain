@@ -48,6 +48,7 @@ input {
 table {
   width: 100%;
   margin: 10px 0;
+  table-layout: fixed;
   thead {
     font-weight: bold;
     color: rgba(0,0,0,0.9);
@@ -66,9 +67,19 @@ table {
       &:hover {
         background: rgba(#f0f5fb,0.3);
       }
+      td {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
     }
   }
   td {
     padding: 10px 5px;
+    a {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: block;
+    }
   }
 }

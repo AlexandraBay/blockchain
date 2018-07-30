@@ -1,14 +1,14 @@
-import { Socket } from 'blockchain.info'
+import { blockexplorer } from 'blockchain.info'
 import { FETCH_TRANSACTIONS_REJECTED, FETCH_TRANSACTIONS_FULFILLED } from '../constants/transactions'
 
 export function fetchTransactions() {
-    let mySocket = new Socket()
-
     return (dispatch) => {
-        mySocket.onTransaction(qwe)
+        blockexplorer.getLatestBlock({})
             .then((response) => {
-                console.log('response', response)
-                dispatch({type: FETCH_TRANSACTIONS_FULFILLED, payload: response})
+                blockexplorer.getBlock(response.hash, {})
+                    .then((response) => {
+                        dispatch({type: FETCH_TRANSACTIONS_FULFILLED, payload: response})
+                    })
             })
             .catch((error) => {
                 dispatch({type: FETCH_TRANSACTIONS_REJECTED, payload: error})

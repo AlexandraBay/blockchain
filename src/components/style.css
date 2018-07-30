@@ -37,7 +37,8 @@ input {
 
 table {
   width: 100%;
-  margin: 10px 0; }
+  margin: 10px 0;
+  table-layout: fixed; }
   table thead {
     font-weight: bold;
     color: rgba(0, 0, 0, 0.9);
@@ -51,5 +52,13 @@ table {
       background: rgba(203, 203, 203, 0.1); }
     table tbody tr:hover {
       background: rgba(240, 245, 251, 0.3); }
+    table tbody tr td {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap; }
   table td {
     padding: 10px 5px; }
+    table td a {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: block; }
